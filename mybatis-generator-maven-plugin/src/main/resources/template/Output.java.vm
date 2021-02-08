@@ -1,0 +1,75 @@
+package ${config.dtoPackageName}.${moduleName};
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import com.ymyang.framework.beans.PojoDuplicate;
+
+#if(${hasLocalDateTime} || ${hasLocalDate})
+import com.fasterxml.jackson.annotation.JsonFormat;
+#end
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${hasLocalDateTime})
+import java.time.LocalDateTime;
+#end
+#if(${hasLocalDate})
+import java.time.LocalDate;
+#end
+#if(${hasLocalTime})
+import java.time.LocalTime;
+#end
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Getter
+@Setter
+@ToString
+@ApiModel(value="${moduleName}.${className}Dto", description="${comments}")
+public class ${className}Dto implements PojoDuplicate {
+
+	private static final long serialVersionUID = 1L;
+
+#foreach ($column in $columns)
+#if($column.columnName != 'tenant_id' && $column.columnName != 'deleted' && $column.columnName != 'password')
+	/**
+	 * $column.comments
+	 */
+#if($column.dataType == 'datetime' || $column.dataType == 'timestamp')
+#if($column.nullable == 'NO' && !$column.columnDefault)
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", required = true, example = "2019-01-01 09:01:01")
+#else
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", example = "2019-01-01 09:01:01")
+#end
+#elseif($column.dataType == 'time')
+#if($column.nullable == 'NO' && !$column.columnDefault)
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", required = true, example = "09:01:01")
+#else
+	@ApiModelProperty(value = "$column.comments", name = "$column.attrname", example = "09:01:01")
+#end
+#elseif($column.dataType == 'date')
+#if($column.nullable == 'NO' && !$column.columnDefault)
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", required = true, example = "2019-01-01")
+#else
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", example = "2019-01-01")
+#end
+#else
+#if($column.nullable == 'NO' && !$column.columnDefault)
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname", required = true)
+#else
+    @ApiModelProperty(value = "$column.comments", name = "$column.attrname")
+#end
+#end
+	private $column.attrType $column.attrname;
+
+#end
+#end
+}

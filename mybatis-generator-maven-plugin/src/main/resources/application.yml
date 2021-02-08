@@ -1,0 +1,91 @@
+
+# mysql
+spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/db_name?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+#    password: root
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+
+### mysql逆向生成配置
+#generator:
+#
+#  # 作者，会标注接口文档的负责人
+#  author:
+#
+#  # 邮箱
+#  email:
+#
+#  # 当前应用的微服务应用名，会标注在Feign Client上
+#  applicationName:
+#
+#  # 是否文件覆盖
+#  overwrite: false
+#
+#  # 控制器增加shiro权限注解
+#  shiroAnnotation: true
+#
+#  # 控制器所属modules绝对路径，若path和packageName为空时，则不生成，最终目录：${controllerPath}/src/main/java/${controllerPackageName}/${modulesName}
+#  controllerPath:
+#  controllerPackageName:
+#
+#  # 控制器中的查询参数对象，若path和packageName为空时，则不生成，最终目录：${queryParamPath}/src/main/java/${queryParamPackageName}/${modulesName}
+#  queryParamPath:
+#  queryParamPackageName:
+#
+#  # 控制器中的新建参数对象，若path和packageName为空时，则不生成，最终目录：${createParamPath}/src/main/java/${createParamPackageName}/${modulesName}
+#  createParamPath:
+#  createParamPackageName:
+#
+#  # 控制器中的更新参数对象，若path和packageName为空时，则不生成，最终目录：${updateParamPath}/src/main/java/${updateParamPackageName}/${modulesName}
+#  updateParamPath:
+#  updateParamPackageName:
+#
+#  # 控制器中的返回值对象，若path和packageName为空时，则不生成，最终目录：${dtoPath}/src/main/java/${dtoPackageName}/${modulesName}
+#  dtoPath:
+#  dtoPackageName:
+#
+#  # service所属modules绝对路径，若path和packageName为空时，则不生成，最终目录：${servicePath}/src/main/java/${servicePackageName}/${modulesName}
+#  servicePath:
+#  servicePackageName:
+#
+#  # 实体类，若path和packageName为空时，则不生成，最终目录：${entityPath}/src/main/java/${entityPackageName}/${modulesName}
+#  entityPath:
+#  entityPackageName:
+#
+#  # mybatis mapper类，若path和packageName为空时，则不生成，最终目录：${mapperPath}/src/main/java/${mapperPackageName}/${modulesName}
+#  mapperPath:
+#  mapperPackageName:
+#
+#  # feign客户端，若path和packageName为空时，则不生成，最终目录：${feignClientPath}/src/main/java/${feignClientPackageName}/${modulesName}
+#  feignClientPath:
+#  feignClientPackageName:
+#
+#  # 菜单sql 最终目录：${menuSqlPath}/src/main/resources/sql/${modulesName}
+#  menuSqlPath:
+#
+#  # 表前缀
+#  tablePrefix: sys_
+#
+#  modules:
+#    # 模块名
+#    - name: sys
+#      # 需要生成的表名列表
+#      tables:
+#        - sys_user
+#        - sys_menu
+
+
+logging:
+  level:
+    root: error

@@ -1,0 +1,26 @@
+package ${config.servicePackageName}.${moduleName};
+
+import ${config.entityPackageName}.${moduleName}.${className}Entity;
+import ${config.queryParamPackageName}.${moduleName}.${className}QueryParam;
+import ${config.createParamPackageName}.${moduleName}.${className}CreateParam;
+import ${config.updateParamPackageName}.${moduleName}.${className}UpdateParam;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends IService<${className}Entity> {
+
+	IPage<${className}Entity> page(${className}QueryParam param);
+
+	${className}Entity create(${className}CreateParam param);
+
+	${className}Entity update(${className}UpdateParam param);
+}
+

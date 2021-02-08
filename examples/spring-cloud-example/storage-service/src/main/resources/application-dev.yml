@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    name: storageDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_test_storage?useSSL=false&autoReconnect=true&failOverReadOnly=false&useUnicode=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    druid:
+      max-active: 10
+      min-idle: 1
+      max-wait: 5000
+      filters: stat,wall,slf4j
+      web-stat-filter.enabled: true
+      stat-view-servlet:
+        enabled: true
+        login-username: root
+        login-password: 123456
+        allow: 127.0.0.1
+
+  zipkin:
+    base-url: http://192.168.105.71:9411/
+    sender.type: web
+  #采样比例默认的为 0.1可设置介于 0到 1之间，1则表示全部采集
+  sleuth.sampler.probability: 0.1
+  cloud.alibaba.seata.tx-service-group: business-service
+seata:
+  enabled: true
+  service:
+    grouplist.default: 192.168.105.71:8091
+    vgroup-mapping.business-service: default
+    disable-global-transaction: false

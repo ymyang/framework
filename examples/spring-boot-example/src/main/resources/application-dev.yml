@@ -1,0 +1,65 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_ksg_test?useSSL=false&autoReconnect=true&failOverReadOnly=false&useUnicode=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    max-wait: 10000
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: MyHikariCP
+      # 最小空闲连接数量
+      minimum-idle: 1
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 600000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 10000
+  redis:
+    host: 127.0.0.1
+    port: 6371
+    password: 123456
+    database: 1
+  mail:
+    host: smtp.163.com
+    username: test@163.com
+    password: ZUGFBGHNDAJKUCYF
+    protocol: smtp
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+aliyun:
+  accessKeyId: 1234
+  accessKeySecret: 1234
+  smsCodeTemplate: SMS_197625695
+  oss:
+    endpoint: oss-accelerate.aliyuncs.com
+    bucketName: test
+    fileHost: dev    #bucket下文件夹的路径
+    url: https://test-cdn.ymyang.com
+rocketmq:
+  nameSrvAddr: 127.0.0.1:9876
+  topic: topic_dev
+  group: GID_TEST_DEV
+  accessChannel: LOCAL
+  accessKey:
+  secretKey:
+app:
+  host: http://localhost:8081
+  fileDir: /opt/tmp/file

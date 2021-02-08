@@ -1,0 +1,67 @@
+package ${config.entityPackageName}.${moduleName};
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${hasLocalDateTime})
+import java.time.LocalDateTime;
+#end
+#if(${hasLocalDate})
+import java.time.LocalDate;
+#end
+#if(${hasLocalTime})
+import java.time.LocalTime;
+#end
+import lombok.*;
+
+import com.ymyang.framework.mybatisplus.BaseModel;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@TableName("${tableName}")
+@Getter
+@Setter
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class ${className}Entity extends BaseModel<${className}Entity> {
+
+	private static final long serialVersionUID = 1L;
+
+#foreach ($column in $columns)
+	/**
+	 * $column.comments
+	 */
+#if($column.columnName == $pk.columnName)
+#if($column.extra == 'auto_increment')
+	@TableId(type = IdType.AUTO)
+#else
+	@TableId
+#end
+#end
+#if($column.columnName == 'deleted')
+	@TableLogic
+#end
+#if($column.columnName == 'create_time' || $column.columnName == 'creator_id' || $column.columnName == 'creator_name')
+	@TableField(fill = FieldFill.INSERT)
+#end
+#if($column.columnName == 'modify_time' || $column.columnName == 'modifier_id' || $column.columnName == 'modifier_name')
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+#end
+	private $column.attrType $column.attrname;
+
+#end
+}

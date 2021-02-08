@@ -1,0 +1,69 @@
+package ${config.servicePackageName}.${moduleName}.impl;
+
+import com.ymyang.framework.beans.exception.BusinessException;
+import ${config.servicePackageName}.${moduleName}.${className}Service;
+import ${config.entityPackageName}.${moduleName}.${className}Entity;
+import ${config.queryParamPackageName}.${moduleName}.${className}QueryParam;
+import ${config.createParamPackageName}.${moduleName}.${className}CreateParam;
+import ${config.updateParamPackageName}.${moduleName}.${className}UpdateParam;
+import ${config.mapperPackageName}.${moduleName}.${className}Mapper;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service("${moduleName}.${classname}Service")
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}Entity> implements ${className}Service {
+
+	@Override
+	public IPage<${className}Entity> page(${className}QueryParam param) {
+		IPage<${className}Entity> page = new Page<>(param.getPageIndex(), param.getPageSize());
+		${className}Entity entity = new ${className}Entity();
+		param.copyPropertiesTo(entity, false);
+		QueryWrapper<${className}Entity> wrapper = Wrappers.query(entity);
+
+		return page(page, wrapper);
+	}
+
+
+	@Override
+	public ${className}Entity create(${className}CreateParam param) {
+		${className}Entity entity = new ${className}Entity();
+		param.copyPropertiesTo(entity, false);
+
+		boolean f = save(entity);
+
+		if (!f) {
+			throw new BusinessException("创建失败");
+		}
+
+		return entity;
+	}
+
+	@Override
+	public ${className}Entity update(${className}UpdateParam param) {
+		${className}Entity entity = getById(param.getId());
+		if (entity == null) {
+			throw new BusinessException("未查询到此对象");
+		}
+
+		param.copyPropertiesTo(entity, false);
+		boolean f = updateById(entity);
+
+		if (!f) {
+			throw new BusinessException("修改失败");
+		}
+
+		return entity;
+	}
+}

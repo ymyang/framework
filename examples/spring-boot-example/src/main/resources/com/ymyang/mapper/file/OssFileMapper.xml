@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymyang.mapper.file.OssFileMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ymyang.entity.file.OssFileEntity" id="ossFileResultMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="deleted" column="deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="creatorId" column="creator_id"/>
+        <result property="creatorName" column="creator_name"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifierId" column="modifier_id"/>
+        <result property="modifierName" column="modifier_name"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                    id,
+                    name,
+                    url,
+                    deleted,
+                    create_time,
+                    creator_id,
+                    creator_name,
+                    modify_time,
+                    modifier_id,
+                    modifier_name,
+        	</sql>
+
+
+</mapper>
