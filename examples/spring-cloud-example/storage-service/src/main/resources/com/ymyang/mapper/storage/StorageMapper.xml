@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymyang.mapper.storage.StorageMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ymyang.entity.storage.StorageEntity" id="storageResultMap">
+        <result property="id" column="id"/>
+        <result property="commodityCode" column="commodity_code"/>
+        <result property="count" column="count"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                    id,
+                    commodity_code,
+                    count,
+        	</sql>
+
+
+</mapper>

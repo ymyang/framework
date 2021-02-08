@@ -1,8 +1,8 @@
 package com.ymyang.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.ymyang.entity.OrderEntity;
-import com.ymyang.service.OrderService;
+import com.ymyang.param.order.OrderCreateParam;
+import com.ymyang.service.order.OrderService;
 import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class OrderController {
     private OrderService accountService;
 
     @PostMapping
-    public String order(@RequestBody OrderEntity param) {
+    public String order(@RequestBody OrderCreateParam param) {
         log.info("POST /api/order, xid: " + RootContext.getXID() + ", param: " + JSON.toJSONString(param));
 
         accountService.order(param);

@@ -1,8 +1,9 @@
 package com.ymyang.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.ymyang.entity.AccountEntity;
-import com.ymyang.service.AccountService;
+import com.ymyang.entity.account.AccountEntity;
+import com.ymyang.param.account.AccountUpdateParam;
+import com.ymyang.service.account.AccountService;
 import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping
-    public String updateMoney(@RequestBody AccountEntity param) {
+    public String updateMoney(@RequestBody AccountUpdateParam param) {
         log.info(" POST /api/account, xid: " + RootContext.getXID() + ", param: " + JSON.toJSONString(param));
 
         accountService.updateMoney(param);

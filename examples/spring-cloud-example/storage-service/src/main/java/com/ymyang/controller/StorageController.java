@@ -1,8 +1,8 @@
 package com.ymyang.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.ymyang.entity.StorageEntity;
-import com.ymyang.service.StorageService;
+import com.ymyang.param.storage.StorageUpdateParam;
+import com.ymyang.service.storage.StorageService;
 import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class StorageController {
     private StorageService storageService;
 
     @PostMapping
-    public String updateStorage(@RequestBody StorageEntity param) {
+    public String updateStorage(@RequestBody StorageUpdateParam param) {
         log.info(" POST /api/storage, xid: " + RootContext.getXID() + ", param: " + JSON.toJSONString(param));
 
         storageService.updateStorage(param);

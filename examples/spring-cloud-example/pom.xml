@@ -14,13 +14,14 @@
         <module>storage-service</module>
         <module>order-service</module>
         <module>business-service</module>
+        <module>common</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.test.skip>true</maven.test.skip>
-        <framework.version>2.3.2</framework.version>
+        <framework.version>1.0.0</framework.version>
         <mybatisplus.version>3.2.0</mybatisplus.version>
         <swagger.version>2.9.2</swagger.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -121,6 +122,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.ymyang.framework</groupId>
+                <artifactId>web</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ymyang.framework</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ymyang.framework</groupId>
+                <artifactId>beans</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -139,6 +155,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>-->
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.ymyang.framework</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>${framework.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <repositories>

@@ -14,6 +14,22 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.ymyang</groupId>
+            <artifactId>common</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ymyang.framework</groupId>
+            <artifactId>web</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ymyang.framework</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -56,4 +72,13 @@
 
     </dependencies>
 
+    <build>
+        <finalName>${artifactId}-${profiles.active}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.ymyang.framework</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
