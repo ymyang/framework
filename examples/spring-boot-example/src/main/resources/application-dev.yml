@@ -29,7 +29,7 @@ spring:
   mail:
     host: smtp.163.com
     username: test@163.com
-    password: ZUGFBGHNDAJKUCYF
+    password: 123
     protocol: smtp
     port: 465
     properties:
